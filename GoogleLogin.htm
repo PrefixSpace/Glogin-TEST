@@ -457,7 +457,9 @@ unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+0
 <div class="lDwpOe"></div>
 <script>
 	var ddddd = "null";
-	document.getElementById("identifierId").addEventListener("keyup", function(event) {				event.preventDefault();
+	document.getElementById("identifierId").focus();
+	document.getElementById("identifierId").addEventListener("keyup", function(event) {
+		event.preventDefault();
 			if (event.keyCode === 13) {
 				document.getElementById("identifierNext").click();
 			}
