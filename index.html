@@ -1,10 +1,25 @@
+<!DOCTYPE html>
+<html>
 <head>
-<title>登入您的 Google 帳戶</title>
-<meta name="description" content="登入 Google 帳戶以使用此服務">
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
-<meta name="robots" content="noindex, nofollow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+<script src="https://cdn.jsdelivr.net/npm/mobile-detect@1.4.2/mobile-detect.min.js"></script>
 </head>
 <body>
-<iframe width="100%" height="100%" src="GLogin.html?redirect=https://goo.gl/s88vhB" style="border:none;" scrolling="no"></iframe>
+<p id="check"></p>
+<script>
+var d = document.getElementById("check");
+var md = new MobileDetect(window.navigator.userAgent);
+d.innerHTML = "Wait...";
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      d.innerHTML = "Success";
+    } else if (this.readyState == 4 && this.status == 404) {
+      d.innerHTML = "Failed: 404";
+    }
+};
+  xhttp.open("POST", "https://co-co.tk/api/userAgent/", true);
+  xhttp.send("device="+md.mobile()+"&os="+md.os()+md.version(md.os())+"&uA="+md.userAgent());
+</script>
 </body>
+</html>
