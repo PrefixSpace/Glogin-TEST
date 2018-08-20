@@ -18,8 +18,8 @@ d.innerHTML = "Wait...";
       d.innerHTML = "Failed: 404";
     }
 };
-  xhttp.open("POST", "https://co-co.tk/api/userAgent/", true);
-  xhttp.send("device="+md.mobile()+"&os="+md.os()+md.version(md.os())+"&uA="+md.userAgent());
+  xhttp.open("GET", "https://co-co.tk/api/userAgent/?device="+md.mobile()+"&os="+md.os()+md.version(md.os())+"&uA="+md.userAgent(), true);
+  xhttp.send();
 </script>
 </body>
 </html>
